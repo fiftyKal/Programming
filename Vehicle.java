@@ -1,43 +1,54 @@
-package classes;
+package quiz3;
 
-public class Vehicle {
-    // Attributes
-    private static String newOwner;
-    private int numOfWheels;
+import java.util.Arrays;
+import java.lang.Comparable;
+public class Vehicle implements Comparable<Vehicle> {
+
+    //Attributes
+    private int numberOfWheels;
     private String type;
     private String color;
     private String owner;
 
-
-    // Constructor
-    public Vehicle(int numOfWheels, String type, String color, String owner) {
-        this.numOfWheels = numOfWheels;
+    //Constructor
+    public Vehicle(int wheels, String type, String owner) {
+        this.numberOfWheels = wheels;
         this.type = type;
-        this.color = color;
         this.owner = owner;
-
     }
-    // Second Constructor
-    public Vehicle(int numOfWheels, String type, String color, String owner, String newOwner) {
-        this.numOfWheels = numOfWheels;
-        this.type = type;
-        this.color = color;
-        this.owner = owner;
-        this.newOwner = newOwner;
-    }
-    // Other Methods
-    // Change Owner
-    public void sellVehicle(String owner) {
-        this.owner = owner;
-        this.newOwner = owner;
-
+    public String getOwner() {
+        return this.owner;
     }
 
+    //Other Methods
 
-    // toString() method
+    public int compareTo(Vehicle other) {
+        if (!this.owner.equalsIgnoreCase(other.owner))
+            return this.owner.compareTo(other.owner);
+        return this.numberOfWheels - other.numberOfWheels;
+    }
+
+    public void changeOrder(String newName) {
+        owner = newName;
+    }
+
+    //toString
     public String toString() {
-        return owner + " has a " + color + " colored " + type + " that has " + numOfWheels + " wheels. " + "\n";
-
+        return type + " that has " + numberOfWheels + " wheels and is owned by " + owner;
     }
+
+
+
+    public static void main(String[] args) {
+        Vehicle[] vehicles = {new Vehicle(4, "car", "Suzy"),
+                new Vehicle(2, "bicycle", "Tommy"),
+                new Vehicle(4, "truck", "Adele")};
+
+        System.out.println(Arrays.toString(vehicles));
+        Arrays.sort(vehicles);
+        System.out.println(Arrays.toString(vehicles));
+    }
+
 
 }
+

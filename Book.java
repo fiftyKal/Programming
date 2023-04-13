@@ -1,42 +1,25 @@
-package classes;
+package homework5;
+
 
 public class Book {
-    // Instance Variables
-    public static String title;
-    public static String author;
-    private double price;
 
+    //instance variables
+    private String title;
+    private String author;
+    private int numberOfCopies;
 
-    // Constructor
-    public Book(String title, String author, double price) {
+    //constructor
+    public Book(String title, String author, int number) {
         this.title = title;
         this.author = author;
-        this.price = price;
+        numberOfCopies = number;
     }
 
-    // Other Methods
-    public void getAuthor() {
-        this.author = author;
+    public void updateCopies (int additionalCopies) {
+        numberOfCopies += additionalCopies;
     }
 
-    public void getTitle() {
-        this.title = title;
-    }
-    public void getPrice() { this.price = price;}
-
-    public int compareTo(Book second) {
-        if (this.author.compareTo(second.author) == 0) {
-            return this.title.compareTo(second.title);
-        } else {
-            return this.author.compareTo(second.author);
-        }
-    }
-
-    public int compareTitle(Book other) {
-        return this.title.compareTo(other.title);
-    }
-    // toString Method
     public String toString() {
-        return title + " by " + author + " costs " + price;
+        return title + " by " + author + " has copies of " + numberOfCopies;
     }
 }
